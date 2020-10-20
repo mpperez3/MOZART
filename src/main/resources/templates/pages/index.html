@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}"
+      xmlns="http://www.w3.org/1999/xhtml"
+>
+<body>
+<div layout:fragment="content">
+    <div class="" style="">
+        <div class="text-center col-md-8 p-lg-5 mx-auto ">
+            <div id="dropzone">
+                <form action="/upload" class="dropzone needsclick" id="my-dropzone">
+
+                    <div class="progress" id="progress" style="display: none; margin-bottom: 15px">
+                        <div aria-valuemax="100" aria-valuemin="0"
+                             aria-valuenow="75" class="progress-bar progress-bar-striped progress-bar-animated"
+                             role="progressbar" style="width: 75%">0%
+                        </div>
+                    </div>
+
+                    <div class="animation-container" id="calculating-molecular-descriptors"
+                         style="display: none">
+                        <div class="d-flex align-items-center">
+                            <div class="animation">
+                                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                                <lottie-player autoplay
+                                               background="transparent" loop
+                                               speed="1"
+                                               src="https://assets10.lottiefiles.com/packages/lf20_hLc0yR.json"
+                                               style="width: 300px; height: 300px;"></lottie-player>
+                            </div>
+                        </div>
+                        <div>Calculating molecular descriptors...</div>
+                    </div>
+                    <div class="animation-container" id="predicting-data" style="display: none ">
+                        <div class="d-flex align-items-center">
+                            <div class="animation">
+                                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                                <lottie-player autoplay
+                                               background="transparent" loop
+                                               speed="1" src="https://assets6.lottiefiles.com/packages/lf20_cbXcz6.json"
+                                               style="width: 300px; height: 300px;"></lottie-player>
+                            </div>
+                        </div>
+                        <div>Predicting data...</div>
+                    </div>
+
+                    <div id="upload-container">
+                        <i class="fas fa-upload fa-4x"></i>
+                        <div class="dz-message needsclick">
+                            <div>Drop file with SIMILES (line separated or as <b><a
+                                    href="/file/exampleSmiles.tsv"
+                                    target="_blank"
+                                    title="example File">this
+                                example file</a></b>) here
+                            </div>
+                            <p>or </p>
+                            <button class="btn btn-danger btn-lg " id="drop-button" type="button">
+                                click to upload.
+                            </button>
+                        </div>
+                        <div><b>Max SMILEs per request: <span th:text="${maxSMiles}"></span></b></div>
+
+                        <div class="d-flex justify-content-center h-100">
+                            <div class="file-upload-wrapper d-none">
+                                <input class="file-upload" data-height="500" id="input-file-now-custom-2"
+                                       type="file"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="searchbar">
+                <button class="search_icon btn" href="#" id="calculate-one-smile-button"><i
+                        class="fas fa-brain"></i></button>
+                <form action="/calculateOneSmile" class="" id="calculate-one-smile">
+                    <input class="search_input" id="smileInput" name="smile" placeholder="Or insert one SMILE..."
+                           required="required" type="text">
+                </form>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+    <div class=" text-white" id="text-information">
+        <div class="">
+            <h1 class="display-4">Compound enzyme interaction predictor</h1>
+
+        </div>
+        <div class="py-5">
+
+            <p class="lead">The main aim of MOZART (co<b>M</b>p<b>O</b>und en<b>Z</b>yme interAction
+                p<b>R</b>edic<b>T</b>or) is to identify the interaction between a compound and enzyme subclasses
+                targets. The model implanted in the platform was developed using a multi-target machine learning model
+                based on an artificial neural network multi-layer perceptron algorithm.
+            </p>
+            <p class="lead">
+                The presented model was able to predict enzymatic reactions of a query molecule with a high accuracy.
+                The input
+                data is codified in the <b>SMILE</b> specification and the model is be able to predict the Enzyme
+                Commission number (EC number) that the reactions can catalyze.
+            </p>
+            <p class="lead">
+                If you are interested in making a large number of requests or in the possibility of calling the
+                application via an API rest, please contact us
+            </p>
+        </div>
+
+    </div>
+    <div id="results-section" style="display:none">
+        <div class="loadingData" style="display:none">
+            <div class="cssload-container">
+                <div class="cssload-shaft1"></div>
+                <div class="cssload-shaft2"></div>
+                <div class="cssload-shaft3"></div>
+                <div class="cssload-shaft4"></div>
+                <div class="cssload-shaft5"></div>
+                <div class="cssload-shaft6"></div>
+                <div class="cssload-shaft7"></div>
+                <div class="cssload-shaft8"></div>
+                <div class="cssload-shaft9"></div>
+                <div class="cssload-shaft10"></div>
+            </div>
+            <div class="loadingText">Loading data....</div>
+        </div>
+
+        <div class="response-table" id="datatable-container">
+            <table id="datatable" class="table table-striped table-bordered hover"></table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

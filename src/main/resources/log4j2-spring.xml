@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="60" status="warn">
+    <Properties>
+        <Property name="log-path">logs</Property>
+    </Properties>
+    <Appenders>
+        <!--SYSOUT-->
+        <Console name="Console-Appender" target="SYSTEM_OUT">
+            <PatternLayout disableAnsi="false">
+                <pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level --- [%t] %c{1.}} : %msg%n
+                </pattern>
+            </PatternLayout>
+            <Filters>
+                <!-- Deny warn, error and fatal messages -->
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+        </Console>
+        <Console name="Console-Appender-line" target="SYSTEM_OUT">
+            <PatternLayout disableAnsi="false">
+                <pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level --- [%t] %c{1.}.%L} : %msg%n
+                </pattern>
+            </PatternLayout>
+        </Console>
+
+        <!--File for application messages without lines-->
+        <RollingFile name="App-File-Appender" fileName="${log-path}/MOZART.log"
+                     filePattern="${log-path}/$${date:yyyy-MM}/MOZART-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level --- [%t] %c{1.}} : %msg%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="25MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <Filters>
+                <!-- Deny warn, error and fatal messages -->
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+        </RollingFile>
+        <!--File for application messages with lines-->
+        <RollingFile name="App-File-Appender-line" fileName="${log-path}/MOZART.log"
+                     filePattern="${log-path}/$${date:yyyy-MM}/MOZART-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5level --- [%t] %c{1.}.%L} : %msg%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="25MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+        <!--File for SQL queries from MariaDB-->
+        <RollingFile name="SQL-File-Appender" fileName="${log-path}/MOZART-sql.log"
+                     filePattern="${log-path}/$${date:yyyy-MM}/MOZART-sql-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} : %msg%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+        <!--File for Spring cache-->
+        <RollingFile name="Cache-File-Appender" fileName="${log-path}/MOZART-cache.log"
+                     filePattern="${log-path}/$${date:yyyy-MM}/MOZART-cache-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} : %msg%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="25MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!--Log information about guidelines into console and file-->
+        <AsyncLogger name="es.uvigo.sing.chemSmile" level="info" additivity="false" includeLocation="true">
+            <!--Don't log the line with INFO level-->
+            <AppenderRef ref="App-File-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+            <!--Save the line with warn, error and fatal levels-->
+            <AppenderRef ref="App-File-Appender-line" level="warn"/>
+            <AppenderRef ref="Console-Appender-line" level="warn"/>
+        </AsyncLogger>
+
+        <!--Log info level of Hikari, Hibernate and Spring into console-->
+        <AsyncLogger name="com.zaxxer.hikari" level="info" additivity="false" includeLocation="true">
+            <!--Don't log the line with INFO level-->
+            <AppenderRef ref="Console-Appender"/>
+            <!--Save the line with warn, error and fatal levels-->
+            <AppenderRef ref="Console-Appender-line" level="warn"/>
+            <AppenderRef ref="App-File-Appender-line" level="warn"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.hibernate" level="info" additivity="false" includeLocation="true">
+            <!--Don't log the line with INFO level-->
+            <AppenderRef ref="Console-Appender"/>
+            <!--Save the line with warn, error and fatal levels-->
+            <AppenderRef ref="Console-Appender-line" level="warn"/>
+            <AppenderRef ref="App-File-Appender-line" level="warn"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.springframework" level="info" additivity="false" includeLocation="true">
+            <!--Don't log the line with INFO level-->
+            <AppenderRef ref="Console-Appender"/>
+            <!--Save the line with warn, error and fatal levels-->
+            <AppenderRef ref="Console-Appender-line" level="warn"/>
+            <AppenderRef ref="App-File-Appender-line" level="warn"/>
+        </AsyncLogger>
+
+        <!--MariaDB SQL queries-->
+        <AsyncLogger name="org.mariadb.jdbc" level="info" additivity="false">
+            <!--<AppenderRef ref="SQL-File-Appender"/>-->
+        </AsyncLogger>
+
+        <!--Spring cache-->
+        <AsyncLogger name="org.springframework.cache" level="TRACE" additivity="false">
+            <AppenderRef ref="Cache-File-Appender"/>
+            <!--<AppenderRef ref="Console-Appender-line"/>-->
+        </AsyncLogger>
+
+        <AsyncRoot>
+            <AppenderRef ref="Console-Appender"/>
+        </AsyncRoot>
+    </Loggers>
+</Configuration>

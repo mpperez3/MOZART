@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-GB" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MOZART | a multi-target machine learning to identify the interaction between a compound and enzymes</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="MOZART | a multi-target machine learning to identify the interaction between a compound and enzymes"
+          name="description">
+    <meta content="MOZART, compound enzyme predictor, compound enzyme interaction predictor, SMILE enzyme predictor, machine learning, compound, enzyme, predictor, interaction, SMILE"
+          name="keywords"/>
+    <meta name="author" content="">
+    <meta content="LAQV requimte and grupo SING" name="copyright"/>
+    <meta content="index" name="robots"/>
+    <meta CONTENT="2 days" NAME="Revisit-after">
+    <meta content="43200" http-equiv="expires"/>
+    <meta CONTENT="English" NAME="DC.Language" SCHEME="RFC1766">
+
+    <meta content="${_csrf.token}" name="_csrf"/>
+    <meta content="${_csrf.headerName}" name="_csrf_header"/>
+    <link href="/img/favicon.png" rel="icon" sizes="32x32" type="image/png">
+
+    <!-- Bootstrap core CSS-->
+    <link href="webjars/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="webjars/font-awesome/5.14.0/css/all.css" rel="stylesheet">
+    <!-- Page level plugin CSS-->
+    <!--<link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">-->
+    <link href="/css/flag-icon/css/flag-icon.min.css" rel="stylesheet">
+    <link href="/css/css-percentage-circle/css/circle.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <!--    <link href="/css/sb-admin.min.css" rel="stylesheet">-->
+    <!--    <link href="/js/library/jqChosen/component-chosen.min.css" rel="stylesheet">-->
+    <link href="/js/library/bootstrap-sweetalert/lib/sweetalert.css" rel="stylesheet">
+    <link href="/js/library/dropzone-5.7.0/dist/min/dropzone.min.css" rel="stylesheet">
+    <link href="/js/library/dropzone-5.7.0/dist/min/basic.min.css" rel="stylesheet">
+    <link href="/js/library/dataTables/DataTables-1.10.22/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/js/library/dataTables/DataTables-1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/js/library/dataTables/Buttons-1.6.4/css/buttons.bootstrap4.min.css" rel="stylesheet">
+    <link href="/js/library/dataTables/FixedHeader-3.1.7/css/fixedHeader.bootstrap4.min.css" rel="stylesheet">
+    <link href="/js/library/dataTables/FixedColumns-3.3.1/css/fixedColumns.bootstrap4.min.css" rel="stylesheet">
+    <link href="/js/library/dataTables/FixedColumns-3.3.1/css/fixedColumns.dataTables.min.css" rel="stylesheet">
+    <!--    <link href="/vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet">-->
+
+
+    <link href="/css/public.css" rel="stylesheet">
+
+    <!--    <title th:text="' Prediction |  '+ ${title}"></title>-->
+    <script type="text/javascript">
+
+
+    </script>
+
+    <th:block layout:fragment="view-css"></th:block>
+</head>
+<body class="" id="page-top">
+<!-- Navigation-->
+<!--<div class="content-wrapper" ng-app="twitterAnalyser" ng-cloak>-->
+<div th:replace="fragments/navbar"></div>
+
+<div class="container" id="container">
+
+    <div class="flash" th:if="${#vars['flash.message']}">
+        <div th:class="|alert alert-${#vars['flash.class']}|">
+            <span th:text="${#vars['flash.message']}"></span>
+        </div>
+    </div>
+    <div layout:fragment="content"></div>
+    <div class="clearfix"></div>
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+
+</div>
+
+<div class="clearfix"></div>
+<footer class="page-footer font-small d-flex align-items-center">
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Copyright -->
+            <div class="container text-center">
+                © 2020 Copyright:
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6 text-center">
+
+                <a href="https://laqv.requimte.pt/" target="_blank">
+                    <img alt="LAQV requimte logo" class=" img-fluid" src="img/header-logo.svg"
+                         style="width: 230px; height: 50px">
+                </a>
+            </div>
+            <div class="col-md-6 text-center">
+                <a href="http://sing-group.org/" target="_blank">
+                    <img alt="SING group" class=" img-fluid" src="img/singGrey.svg" style="width: 130px; height: 60px">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+
+</footer>
+<div class="clearfix"></div>
+
+
+<!-- Bootstrap core JavaScript-->
+
+<!--<script src="webjars/requirejs/2.3.6/require.min.js"></script>-->
+<!--<script src="webjars/angular/1.7.5/angular.min.js"></script>-->
+<script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
+<!--<script src="/vendor/jquery-ui/jquery-ui.js"></script>-->
+<!--<script src="webjars/popper.js/1.14.3/umd/popper.min.js"></script>-->
+
+<!--<script src="webjars/moment/2.23.0/moment.js"></script>-->
+<!--<script src="/vendor/bootstrap/js/plugins/tab.js"></script>-->
+<!--<script src="/vendor/bootstrap/js/plugins/tooltip.js"></script>-->
+<!--<script src="/vendor/bootstrap/js/plugins/modal.js"></script>-->
+<!--&lt;!&ndash; Core plugin JavScript&ndash;&gt;-->
+<!--<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>-->
+<!-- Page level plugin JavaScript-->
+<!--<script src="/vendor/chart.js/Chart.min.js"></script>-->
+<!--<script src="/vendor/datatables/jquery.dataTables.js"></script>-->
+<!--<script src="/vendor/datatables/dataTables.bootstrap4.js"></script>-->
+<!-- Custom scripts for all pages-->
+<!-- Custom scripts for this page-->
+<!--<script src="/js/library/sb-admin/sb-admin-datatables.min.js"></script>-->
+<!--&lt;!&ndash;<script src="/js/library/sb-admin/sb-admin-charts.min.js"></script>&ndash;&gt;-->
+
+<!--<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>-->
+
+<script src="/js/library/dropzone-5.7.0/dist/min/dropzone.min.js"></script>
+<!--<script src="/js/library/dropzone-5.7.0/dist/min/dropzone-amd-module.min.js"></script>-->
+<!--<script src="/js/library/jqChosen/chosen.jquery.min.js"></script>-->
+<script src="/js/library/bootstrap-sweetalert/lib/sweetalert.min.js"></script>
+<script src="/js/library/dataTables/datatables.min.js"></script>
+<script src="/js/library/dataTables/DataTables-1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<script src="/js/library/dataTables/Buttons-1.6.4/js/buttons.bootstrap4.min.js"></script>
+<script src="/js/library/dataTables/Buttons-1.6.4/js/buttons.flash.min.js"></script>
+<script src="/js/library/dataTables/Buttons-1.6.4/js/buttons.html5.js"></script>
+<script src="/js/library/dataTables/Buttons-1.6.4/js/buttons.print.min.js"></script>
+<script src="/js/library/dataTables/Buttons-1.6.4/js/buttons.colVis.min.js"></script>
+<script src="/js/library/dataTables/FixedHeader-3.1.7/js/fixedHeader.bootstrap4.min.js"></script>
+<script src="/js/library/dataTables/FixedColumns-3.3.1/js/fixedColumns.bootstrap4.min.js"></script>
+<script src="/js/library/dataTables/JSZip-2.5.0/jszip.min.js"></script>
+<script src="/js/library/dataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="/js/library/dataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="/js/library/jquery-hottie/jquery.hottie.js"></script>
+
+
+<script src="/js/global.js"></script>
+<th:block layout:fragment="view-js"></th:block>
+
+</body>
+
+</html>

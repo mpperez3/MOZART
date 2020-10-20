@@ -1,0 +1,14 @@
+id       	SMILE
+hsa:4835 	CCOC(=O)c1cnc2c(cnn2CC)c1NN=C(C)C.Cl
+hsa:4835 	COc1cccc2c1C(=O)c1c(O)c3c(c(O)c1C2=O)C[C@@](O)(C(=O)CO)C[C@@H]3O[C@H]1C[C@H](N)[C@H](O[C@H]2CCCCO2)[C@H](C)O1
+hsa:4835 	CS(=O)(=O)CCNCc1ccc(-c2ccc3ncnc(Nc4ccc(OCc5cccc(F)c5)c(Cl)c4)c3c2)o1.Cc1ccc(S(=O)(=O)O)cc1.Cc1ccc(S(=O)(=O)O)cc1.O
+hsa:2880 	O=c1[nH]c2cc(Cl)ccc2o1
+hsa:4353 	O=[N+]([O-])O[C@H]1CO[C@H]2[C@@H]1OC[C@H]2O[N+](=O)[O-]
+hsa:4353 	NC(=O)c1ncn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)n1
+hsa:4353 	CCc1nc(N)nc(N)c1-c1ccc(Cl)cc1
+hsa:25824	COP(=O)(OC)C(O)C(Cl)(Cl)Cl
+hsa:5052 	CCOc1ccc2nc(S(N)(=O)=O)sc2c1
+hsa:7173 	COc1ccc2c3c1OC1CC(O)C=C[C@@]31CCN(C)C2
+hsa:5052 	O=C(O)CCc1nc(-c2ccccc2)c(-c2ccccc2)o1
+hsa:7173 	CC(CN(C)C)CN1c2ccccc2CCc2ccccc21
+hsa:7173 	C=C1C[C@@H]2[C@H](CC[C@]3(C)C(=O)CC[C@@H]23)[C@@]2(C)C=CC(=O)C=C12
