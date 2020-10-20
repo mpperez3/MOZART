@@ -7,6 +7,8 @@ The main aim of MOZART (coMpOund enZyme interAction pRedicTor) is to identify th
 The presented model was able to predict enzymatic reactions of a query molecule with a high accuracy. The input data is codified in the SMILE specification and the model is be able to predict the Enzyme Commission number (EC number) that the reactions can catalyze.
 
 ## Run
+Download and compile the Java code or download the runnable JAR from [here](https://osf.io/jgyfq/?view_only=87b6de3a15f34250b4595c8832c490b7)
+
 - Make sure Java 7 or higher is installed
 Run the following command to confirm:
 
@@ -22,3 +24,6 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.51-b03, mixed mode)
 $ java -jar MOZART-1.0-SNAPSHOT.jar
 ```
 - Remove the chemSmile.db.mv.db to update to a new version of MOZART
+
+## LICENSE
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
